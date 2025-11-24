@@ -43,8 +43,8 @@ Required packages:
 ## 📊 Dataset Structure
 
 ### Required Data
-Download all data from the provided Google Drive folder. The data should be organized as:
-
+Note: Due to GitHub's file size limitations, the complete dataset is provided as data.zip in the repository. Extract it before running the code.
+Download all data from the provided Google Drive folder, or use the included data.zip file. The data should be organized as:
 ```
 data/
 ├── dataset_detection/
