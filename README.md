@@ -30,7 +30,7 @@ Before running the code, read these papers for background:
 
 ### Python Packages
 ```bash
-pip install scikit-learn pandas numpy matplotlib scipy
+pip install scikit-learn pandas numpy matplotlib scipy jupyter
 ```
 
 Required packages:
@@ -39,6 +39,7 @@ Required packages:
 - `numpy` - Numerical operations
 - `matplotlib` - Visualization
 - `scipy` - Statistical functions
+- `jupyter` - For running analysis notebook
 
 ## 📊 Dataset Structure
 
@@ -98,13 +99,14 @@ pip install -r requirements.txt
 
 ```
 .
-├── main.py              # Main execution script
-├── data.py              # Data loading and preprocessing
-├── mlmodel.py           # Model training and evaluation
-├── plot.py              # Visualization functions
-├── metrics.csv          # Generated metrics output
-├── README.md            # This file
-└── data/                # Data directory (not included)
+├── main.py                  # Main execution script
+├── data.py                  # Data loading and preprocessing
+├── mlmodel.py               # Model training and evaluation
+├── plot.py                  # Visualization functions
+├── MetricsNotebook.ipynb    # Post-analysis metrics notebook
+├── metrics.csv              # Generated metrics output
+├── README.md                # This file
+└── data/                    # Data directory (not included)
 ```
 
 ### File Descriptions
@@ -113,6 +115,7 @@ pip install -r requirements.txt
 - **`data.py`**: Handles data loading, preprocessing, feature extraction, and dataset transformations
 - **`mlmodel.py`**: Implements classifier training, prediction, and evaluation metrics
 - **`plot.py`**: Generates visualization plots for group detection analysis
+- **`MetricsNotebook.ipynb`**: Jupyter notebook for analyzing and visualizing the generated metrics
 
 ## ✅ Tasks Implemented
 
@@ -144,7 +147,7 @@ pip install -r requirements.txt
 
 ## 💻 Usage
 
-### Basic Execution
+### Step 1: Run the Pipeline
 
 Run the complete pipeline:
 ```bash
@@ -160,12 +163,25 @@ This will:
 6. Generate visualization plots
 7. Save all metrics to `metrics.csv`
 
+### Step 2: Analyze Results
+
+After `main.py` completes, run the metrics analysis notebook:
+```bash
+jupyter notebook MetricsNotebook.ipynb
+```
+
+The notebook provides:
+- Detailed metrics analysis and comparisons
+- Additional visualizations
+- Statistical summaries
+- Performance breakdowns by dataset and model
+
 ### Output Files
 
 After execution, the following files are generated:
 
 **Metrics:**
-- `metrics.csv` - Complete metrics for all experiments
+- `metrics.csv` - Complete metrics for all experiments (required input for MetricsNotebook.ipynb)
 
 **Visualizations:**
 - `accuracy_logistic_regression.png`
@@ -239,6 +255,7 @@ data = data.loc[:, ~data.columns.str.contains("feature_name")]
 2. **Group Size**: Use `group_size=1` for Tasks 1-2, vary for Task 3
 3. **Data Matching**: Feature CSVs must match judgment data by key columns
 4. **Memory**: Large group sizes may require significant RAM
+5. **Workflow**: Always run `python main.py` first to generate `metrics.csv` before executing `MetricsNotebook.ipynb`
 
 ## 🐛 Troubleshooting
 
@@ -250,6 +267,9 @@ data = data.loc[:, ~data.columns.str.contains("feature_name")]
 
 **Issue**: "NaN values in predictions"
 - Solution: Check for missing data; the pipeline removes NaN rows automatically
+
+**Issue**: "metrics.csv not found" in MetricsNotebook.ipynb
+- Solution: Run `python main.py` first to generate the metrics file
 
 ## 📝 References
 
